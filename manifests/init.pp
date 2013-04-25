@@ -86,6 +86,7 @@ class mongodb (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
+    replace => false
     require => Package['mongodb-10gen'],
   }
 
