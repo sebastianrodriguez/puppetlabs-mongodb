@@ -37,7 +37,7 @@ class mongodb (
   $servicename     = $mongodb::params::service,
   $logpath         = '/var/log/mongo/mongod.log',
   $logappend       = true,
-  $mongofork       = true,
+  $mongofork       = $mongodb::params::mongofork,
   $port            = '27017',
   $dbpath          = '/var/lib/mongo',
   $nojournal       = undef,
@@ -60,7 +60,8 @@ class mongodb (
   $slave           = undef,
   $only            = undef,
   $master          = undef,
-  $source          = undef
+  $source          = undef,
+  $confpath        = $mongodb::params::confpath
 ) inherits mongodb::params {
 
   if $enable_10gen {
@@ -81,7 +82,7 @@ class mongodb (
     ensure => installed,
   }
 
-  file { '/etc/mongodb.conf':
+  file { $confpath:
     content => template('mongodb/mongod.conf.erb'),
     owner   => 'root',
     group   => 'root',
@@ -93,6 +94,6 @@ class mongodb (
     name      => $servicename,
     ensure    => running,
     enable    => true,
-    subscribe => File['/etc/mongodb.conf'],
+    subscribe => File[$confpath],
   }
 }
