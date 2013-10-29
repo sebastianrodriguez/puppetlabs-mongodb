@@ -9,6 +9,7 @@ class mongodb::params{
       $mongofork = true
       $confpath = '/etc/mongod.conf'
       $logpath = '/var/log/mongo/mongod.log'
+      $dbpath = '/var/lib/mongo/'
     }
     'debian': {
       $locations = {
@@ -26,6 +27,7 @@ class mongodb::params{
       $mongofork = false
       $confpath = '/etc/mongodb.conf'
       $logpath = '/var/log/mongodb/mongodb.log'
+      $dbpath = '/var/lib/mongodb/'
     }
     default: {
       fail ("mongodb: ${::operatingsystem} is not supported.")

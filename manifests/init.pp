@@ -39,7 +39,7 @@ class mongodb (
   $logappend       = true,
   $mongofork       = $mongodb::params::mongofork,
   $port            = '27017',
-  $dbpath          = '/var/lib/mongo',
+  $dbpath          = $mongodb::params::dbpath,
   $nojournal       = undef,
   $cpu             = undef,
   $noauth          = undef,
