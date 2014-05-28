@@ -22,11 +22,11 @@ class mongodb::params{
       }
       $source  = 'mongodb::sources::apt'
       $package = 'mongodb'
-      $service = 'mongodb'
-      $pkg_10gen = 'mongodb-10gen'
+      $service = 'mongod'
+      $pkg_10gen = 'mongodb-org'
       $mongofork = false
-      $confpath = '/etc/mongodb.conf'
-      $logpath = '/var/log/mongodb/mongodb.log'
+      $confpath = '/etc/mongod.conf'
+      $logpath = '/var/log/mongodb/mongod.log'
       $dbpath = '/var/lib/mongodb/'
     }
     default: {
