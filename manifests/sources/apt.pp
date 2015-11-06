@@ -22,7 +22,7 @@ class mongodb::sources::apt inherits mongodb::params {
   }
 
   exec { 'apt-get-update':
-      command     => '/usr/bin/apt-get update -y --force-yes',
+      command     => '/usr/bin/apt-get update -y --force-yes || true',
       refreshonly => true,
       environment => 'DEBIAN_FRONTEND=noninteractive',
     }
